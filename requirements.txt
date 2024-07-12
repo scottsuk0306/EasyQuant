@@ -1,0 +1,7 @@
+huggingface_hub
+transformers
+torch
+auto-gptq
+autoawq
+optimum
+git+https://github.com/huggingface/peft.git

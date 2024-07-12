@@ -9,14 +9,6 @@ log_message() {
 cleanup() {
     log_message "Starting cleanup process..."
 
-    # Remove EasyQuant-specific cache
-    EASYQUANT_CACHE="$HOME/.cache/huggingface/easyquant"
-    if [ -d "$EASYQUANT_CACHE" ]; then
-        log_message "Removing EasyQuant cache directory..."
-        rm -rf "$EASYQUANT_CACHE"
-    else
-        log_message "EasyQuant cache directory not found. Skipping..."
-    fi
 
     # Remove llama.cpp repository if it exists
     if [ -d llama.cpp ]; then
@@ -33,6 +25,10 @@ cleanup() {
     else
         log_message "No quantized model folders found. Skipping..."
     fi
+
+    # Remove downloaded model folders (assuming they're in the current directory)
+    # Be cautious with this command as it removes all directories
+    find . -maxdepth 1 -type d ! -name '.' ! -name '.git' -exec rm -rf {} +
 
     # Remove Conda environment
     if conda info --envs | grep -q "easyquant"; then

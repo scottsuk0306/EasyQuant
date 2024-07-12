@@ -57,7 +57,7 @@ This will:
 
 The `cleanup.sh` script is a utility script for cleaning up the artifacts. It performs the following cleanup operations:
 
-- Removes the EasyQuant-specific cache directory
+- Removes the downloaded model folders
 - Removes the llama.cpp repository if it exists
 - Removes quantized model folders created by EasyQuant
 - Removes the Conda environment
